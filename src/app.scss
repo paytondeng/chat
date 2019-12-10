@@ -1,0 +1,137 @@
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  box-sizing: border-box;
+}
+
+.link {
+  color: #09d3ac;
+  text-decoration: none;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+.panel {
+  min-width: 220px;
+  max-width: 300px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.panel-heading {
+  font-size: 1.3333em;
+}
+
+.item-input {
+  display: flex;
+  align-items: center;
+
+  .form-control {
+    flex-grow: 1;
+  }
+
+  &:first-child .form-control {
+    margin-top: 0;
+  }
+}
+
+.item-email .form-control {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.item-password .form-control {
+  border-bottom-left-radius: 5px;
+}
+
+.form-group {
+  font-size: 12px;
+  margin-top: 20px;
+}
+
+.form-group-error {
+  padding: 10px 15px;
+  color: #503e30;
+  background-color: #fae9a3;
+}
+
+.form-control {
+  margin: 0;
+  padding: 3px 5px;
+  height: 32px;
+  line-height: 32px;
+  border: none;
+  outline: none;
+  font-size: 16px;
+}
+
+.form-control:active {
+  border: none;
+}
+
+.item-email {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom: 1px solid #d6d6d6;
+}
+
+.item-password {
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;;
+}
+
+.register-link {
+  text-decoration: none;
+}
+
+.btn {
+  display: block;
+  height: 38px;
+  line-height: 38px;
+  background-color: #fff;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.btn-login {
+  width: 50px;
+  font-size: 16px;
+  border-bottom-right-radius: 5px;
+}
+
+.btn-save {
+  width: 100%;
+}
+
+.btn-login:active {
+  border: none;
+  outline: none;
+}
+
+.remember-me {
+  cursor: pointer;
+}
+
+.btn-forgot {
+  font-size: 12px;
+}
+
+.from-group-more-actions {
+  display: flex;
+  justify-content: space-between;
+}
+
+.errmsg {
+  margin-top: 20px;
+  color: #f00;
+}
+
+.avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 3px;
+}

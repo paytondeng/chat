@@ -1,0 +1,11 @@
+.user-item {
+  display: flex;
+  width: 100%;
+  align-items: center;
+
+  .nick-name {
+    font-size: 14px;
+    color: #000;
+    margin-left: 10px;
+  }
+}

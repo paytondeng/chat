@@ -1,0 +1,124 @@
+.chat {
+  display: flex;
+  justify-content: center;
+  height: 90vh;
+  margin-top: 5vh;
+}
+
+.column-middle {
+  width: 260px;
+  color: #ccc;
+  background-color: #fff;
+  border-right: 1px solid #ccc;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  padding-left: 15px;
+  height: 60px;
+}
+
+.chat-list {
+  max-width: 100%;
+}
+
+.chat-body {
+  min-width: 40vw;
+  max-width: 50vw;
+  display: flex;
+  flex-direction: column;
+  color: #000;
+  background-color: #f3f3f3;
+
+  .header {
+    padding: 0 15px;
+    height: 8vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .icon-user {
+      font-size: 26px;
+    }
+  }
+
+  .body {
+    position: relative;
+    height: calc(56vh + 200px);
+    overflow: hidden;
+    width: 100%;
+  }
+
+  .note {
+    box-sizing: border-box;
+    position: absolute;
+    top: 1px;
+    left: 0;
+    width: 100%;
+    padding: 3px 4px;
+    z-index: 97;
+    text-align: center;
+    font-size: 12px;
+    background-color: antiquewhite;
+  }
+
+  .online-users {
+    z-index: 99;
+    position: absolute;
+    right: -230px;
+    top: 0;
+    height: calc(56vh + 200px);
+    box-sizing: border-box;
+    padding: 0 10px;
+    background-color: rgba(255, 255, 255, 0.98);
+    width: 230px;
+    transition: right 600ms;
+
+    .user-item {
+      margin-top: 10px;
+    }
+
+    &.online-users-active {
+      right: 0;
+      transition: right 600ms;
+    }
+  }
+
+  .messages {
+    height: 56vh;
+    box-sizing: border-box;
+    overflow-y: auto;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    padding: 0 15px 30px;
+  }
+
+  .footer {
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+
+    .action-bar {
+      font-size: 30px;
+      padding: 0 15px;
+    }
+
+    .message-box {
+      flex-grow: 1;
+      width: 100%;
+      max-width: 100%;
+      padding: 5px 15px;
+      box-sizing: border-box;
+      border: none;
+      outline: none;
+      font-size: 14px;
+      background-color: #f3f3f3;
+
+      &:active {
+        outline: none;
+        border: none;
+      }
+    }
+  }
+}

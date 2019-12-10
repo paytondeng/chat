@@ -1,0 +1,10 @@
+.panel-wrapper-login {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  .panel {
+    transform: translateY(-100px);
+  }
+}

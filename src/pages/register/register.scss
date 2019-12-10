@@ -1,0 +1,14 @@
+.panel-wrapper-register {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  .panel {
+    transform: translateY(-100px);
+  }
+
+  .from-group-more-actions {
+    justify-content: flex-end;
+  }
+}

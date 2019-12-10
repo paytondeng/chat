@@ -1,0 +1,128 @@
+.side-action-bar {
+  position: relative;
+  width: 70px;
+  padding: 20px 0;
+  background-color: #505151;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+
+  .icons {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .my-avatar {
+    width: 50px;
+    height: 50px;
+  }
+
+  .nick-name {
+    margin-top: 3px;
+  }
+
+  .icon-quote,
+  .icon-chat {
+    font-size: 36px;
+    color: #1fb922;
+    margin-top: 20px;
+  }
+
+  .icon-quote {
+    color: #c0c0c0;
+  }
+
+  .icon-setting {
+    font-size: 26px;
+  }
+
+  .menus {
+    display: none;
+    width: 120px;
+    position: absolute;
+    right: -120px;
+    bottom: 10px;
+    padding: 5px 0;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    background-color: #505151;
+
+    li {
+      padding: 10px 15px;
+      font-size: 14px;
+      cursor: default;
+
+      &:hover {
+        background-color: #606060;
+      }
+    }
+
+    &.menus-visible {
+      display: block;
+    }
+  }
+
+  .panel-avatar,
+  .profile-panel {
+    display: none;
+    box-sizing: border-box;
+    position: absolute;
+    z-index: 100;
+    right: -300px;
+    top: 30px;
+    width: 300px;
+    padding: 40px;
+    min-height: 150px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border: 1px solid #ccc;
+    border-left: none;
+    color: #000;
+    background-color: #fff;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, .5);
+
+    &.active {
+      display: block;
+    }
+
+    .nick-name {
+      margin-bottom: 10px;
+      font-size: 16px;
+      font-weight: 700;
+    }
+  }
+
+  .row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .panel-avatar {
+    min-height: auto;
+  }
+
+  .avatars {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+
+  .avatar-item {
+    cursor: pointer;
+
+    .avatar {
+      border: 1px solid transparent
+    }
+
+    &.selected {
+      .avatar {
+        border-color: green;
+      }
+    }
+  }
+}
