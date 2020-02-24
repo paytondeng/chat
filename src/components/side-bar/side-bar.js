@@ -2,12 +2,16 @@ import React from 'react';
 import Avatar from '../avatar/avatar';
 import './side-bar.scss';
 import { put } from '../../core/request';
+import { connect } from 'react-redux';
+import { changeAvatar } from '../../actions';
 
 class SideBar extends React.Component {
   history
+  dispatch
 
   constructor(props) {
     super(props);
+    this.dispatch = props.dispatch;
     this.history = props.history || {};
 
     this.state = {
@@ -100,7 +104,10 @@ class SideBar extends React.Component {
       await put('/user/avatar', {
         avatar: url,
       });
-
+      this.setState({
+        avatar: url,
+      });
+      this.dispatch(changeAvatar(url));
     } catch (err) {
       console.error('update avatar failed:', err);
     }
@@ -158,4 +165,4 @@ class SideBar extends React.Component {
   }
 }
 
-export default SideBar;
+export default connect()(SideBar);

@@ -6,16 +6,19 @@ import Group from '../../components/group/group';
 import SideBar from '../../components/side-bar/side-bar';
 import { apiHost } from '../../core/request';
 import './chat.scss';
+import { connect } from 'react-redux';
 
 class Chat extends React.Component {
   socket
   messageList
   history
   timer
+  dispatch
 
   constructor(props) {
     super(props);
     this.history = props.history;
+    this.dispatch = props.dispatch;
     this.state = {
       chatTitle: '',
       message: '',
@@ -31,6 +34,7 @@ class Chat extends React.Component {
     this.handleEnterKey = this.handleEnterKey.bind(this);
     this.handleClickUserIcon = this.handleClickUserIcon.bind(this);
     this.closeOnlineUsersPanel = this.closeOnlineUsersPanel.bind(this);
+    this.handleChangeGroup = this.handleChangeGroup.bind(this);
   }
 
   componentDidMount() {
@@ -60,9 +64,14 @@ class Chat extends React.Component {
           chatGroups: groups,
         });
         if (groups.length > 0) {
+          const [selectedGroup] = groups;
+          if (!selectedGroup) {
+            return;
+          }
           this.setState({
-            selectedGroup: groups[0],
+            selectedGroup,
           });
+          socket.emit('joinRoom', {name: selectedGroup.name, groupId: selectedGroup.id });
         }
       });
     });
@@ -97,12 +106,38 @@ class Chat extends React.Component {
       this.scrollToBottom();
     });
 
+    socket.on('useronline', (user) => {
+      const messages = this.state.messages;
+      messages.push({
+        type: 'sys',
+        sentAt: new Date().toISOString(),
+        content: `${user.nickName} 上线`
+      });
+      this.setState({
+        messages,
+      });
+      this.scrollToBottom();
+    });
+
     socket.on('userleave', (user) => {
       const messages = this.state.messages;
       messages.push({
         type: 'sys',
         sentAt: new Date().toISOString(),
         content: `${user.nickName} 退出群聊`
+      });
+      this.setState({
+        messages,
+      });
+      this.scrollToBottom();
+    });
+
+    socket.on('useroffline', (user) => {
+      const messages = this.state.messages;
+      messages.push({
+        type: 'sys',
+        sentAt: new Date().toISOString(),
+        content: `${user.nickName} 下线`
       });
       this.setState({
         messages,
@@ -166,6 +201,7 @@ class Chat extends React.Component {
       }
       this.socket.emit('message', {
         content: message,
+        groupId: this.state.selectedGroup.id,
       });
       this.setState({
         message: '',
@@ -182,10 +218,23 @@ class Chat extends React.Component {
     });
   }
 
+  handleChangeGroup(event) {
+    if (event) {
+      this.setState({
+        selectedGroup: event,
+      });
+      this.socket.emit('joinRoom', {name: event.name, groupId: event.id});
+    }
+  }
+
   render() {
     const { chatGroups, messages: chatMessages, onlineUers: users, selectedGroup, typing } = this.state;
     const listItems = chatGroups.map((group) => {
-      return <Group key={group.id} currentId={selectedGroup.id} group={group}></Group>;
+      return <Group
+          key={group.id}
+          currentId={selectedGroup.id}
+          group={group}
+          click={this.handleChangeGroup}></Group>;
     });
 
     const chatTitle = selectedGroup.name;
@@ -280,4 +329,4 @@ class Chat extends React.Component {
   }
 }
 
-export default Chat;
+export default connect()(Chat);
