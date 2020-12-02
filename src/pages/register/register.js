@@ -72,6 +72,7 @@ class Register extends React.Component {
                       name="email"
                       onChange={this.handleChange}
                       placeholder="请输入邮箱"
+                      autoComplete="off"
                       required />
                 </div>
                 <div className="item-input">
@@ -82,6 +83,7 @@ class Register extends React.Component {
                       name="password"
                       onChange={this.handleChange}
                       placeholder="请输入密码"
+                      autoComplete="new-password"
                       required />
                 </div>
 

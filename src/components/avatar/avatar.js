@@ -1,7 +1,7 @@
 import React from 'react';
 
 function Avatar(props) {
-  const avatarUrl = props.url || 'avatar.png';
+  const avatarUrl = props.url || 'logo.png';
   const size = props.width || '50';
   const cssClass = props.cssClass || 'avatar';
 

@@ -4,11 +4,26 @@
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  color: #fff;
   transform: translateY(-100px);
 
-  .app-logo {
-    height: 40vmin;
+  &__logo {
+    height: 20rem;
+    width: 20rem;
+    border-radius: 10rem;
+    font-size: 10rem;
+    background-color: #fa673c;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__desc {
+    font-size: 10px;
+    margin: 10px 0 15px;
+  }
+
+  &__nav {
+    font-size: 14px;
   }
 }

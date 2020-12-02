@@ -3,7 +3,7 @@ import axios from 'axios';
 /**
  * API 域名与端口
  */
-const apiHost = 'http://localhost:3001';
+const apiHost = 'http://chatapi.pcdeng.com';
 
 axios.defaults.timeout = 10000;
 axios.defaults.headers.post['Content-Type'] = 'application/json;charset=UTF-8';
