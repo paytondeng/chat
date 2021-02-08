@@ -12,6 +12,18 @@
 
   .message-info {
     display: flex;
+
+    &.is-owner {
+      flex-direction: row-reverse;
+
+      .message-body {
+        margin-right: 10px;
+
+        .sender-name {
+          text-align: right;
+        }
+      }
+    }
   }
 
   .message-body {

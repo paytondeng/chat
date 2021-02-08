@@ -28,6 +28,7 @@ class Chat extends React.Component {
       onlinePanelActive: false,
       selectedGroup: {},
       typing: '',
+      userId: 0,
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -43,6 +44,16 @@ class Chat extends React.Component {
       transports: ['websocket'],
       query: `token=${token}`,
     });
+
+    const userStr = localStorage.getItem('user');
+    if (userStr) {
+      try {
+        const { id } = JSON.parse(userStr);
+        this.state.userId = id;
+      } catch (err) {
+        console.error('parse json string failed:', err);
+      }
+    }
 
     socket.on('connect', () => {
       console.log('Connected');
@@ -240,7 +251,7 @@ class Chat extends React.Component {
     const chatTitle = selectedGroup.name;
 
     const messages = chatMessages.filter(message => message.sentAt).map((message, index) => {
-      return <Message key={index + 1} message={message} />;
+      return <Message key={index + 1} message={message} userId={this.state.userId} />;
     });
 
     const onlineUers = users.map(user => {

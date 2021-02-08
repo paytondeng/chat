@@ -12,10 +12,15 @@ function Message(props) {
     formaStr = 'HH:mm';
   }
   const sentAt = format(messageTime, formaStr);
+  const className = ['message-info'];
+
+  if (message.senderId === props.userId) {
+    className.push('is-owner');
+  }
   let sys = <div className="message message-sys">{message.content}</div>
   let normal = <div className="message">
     <div className="sent-time">{sentAt}</div>
-    <div className="message-info">
+    <div className={className.join(' ')}>
       <Avatar cssClass="avatar" size="36" url={message.senderAvatar}></Avatar>
       <div className="message-body">
         <div className="sender-name">{message.senderName}</div>
