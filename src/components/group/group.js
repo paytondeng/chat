@@ -27,6 +27,16 @@ class Group extends React.Component {
       }
       time = format(lastMessageTime, formaStr);
     }
+
+    let messageContent = '';
+    switch(group.lastMessageType) {
+      case 2:
+        messageContent = '[图片]'
+        break;
+      default:
+        messageContent = group.lastMessage;
+    }
+
     return (
       <li
           className={currentId === group.id ? 'chat-item chat-item-active' : 'chat-item'}
@@ -38,7 +48,7 @@ class Group extends React.Component {
             <span className="chat-name">{group.name}</span>
             <span className="time">{time}</span>
           </h3>
-          <p className="last-message">{group.lastMessage}</p>
+          <p className="last-message">{messageContent}</p>
         </div>
       </li>
     );

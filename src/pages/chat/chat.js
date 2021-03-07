@@ -7,6 +7,7 @@ import SideBar from '../../components/side-bar/side-bar';
 import { apiHost } from '../../core/request';
 import './chat.scss';
 import { connect } from 'react-redux';
+import { get } from '../../core/request';
 
 class Chat extends React.Component {
   socket
@@ -49,7 +50,24 @@ class Chat extends React.Component {
     if (userStr) {
       try {
         const { id } = JSON.parse(userStr);
-        this.state.userId = id;
+        this.setState({
+          userId: id,
+        });
+        get(`message/groups?userId=${id}`).then(groups => {
+          this.setState({
+            chatGroups: groups,
+          });
+          if (groups.length > 0) {
+            const [selectedGroup] = groups;
+            if (!selectedGroup) {
+              return;
+            }
+            this.setState({
+              selectedGroup,
+            });
+            socket.emit('joinRoom', {name: selectedGroup.name, groupId: selectedGroup.id });
+          }
+        });
       } catch (err) {
         console.error('parse json string failed:', err);
       }
@@ -68,22 +86,6 @@ class Chat extends React.Component {
         this.setState({
           onlineUers,
         });
-      });
-
-      socket.on('chatgroups', groups => {
-        this.setState({
-          chatGroups: groups,
-        });
-        if (groups.length > 0) {
-          const [selectedGroup] = groups;
-          if (!selectedGroup) {
-            return;
-          }
-          this.setState({
-            selectedGroup,
-          });
-          socket.emit('joinRoom', {name: selectedGroup.name, groupId: selectedGroup.id });
-        }
       });
     });
 

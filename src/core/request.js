@@ -55,6 +55,13 @@ const post = (url, params, config = {}) => {
   return request(url, params, config, 'post');
 };
 
+/**
+ * GET 方法
+ * @param string url
+ * @param Object params
+ * @param Object config
+ * @returns
+ */
 const get = (url, params, config = {}) => {
   return request(url, params, config, 'get');
 };

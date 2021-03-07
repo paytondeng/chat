@@ -17,6 +17,18 @@ function Message(props) {
   if (message.senderId === props.userId) {
     className.push('is-owner');
   }
+  let messageContent = '';
+  switch (message.type) {
+    case 1:
+      messageContent = <div className="bubble">{message.content}</div>;
+      break;
+    case 2:
+      messageContent = <img alt="图片" className="image" src={message.content} />
+      break;
+    default:
+      messageContent = <div className="bubble">{message.content}</div>;
+      break;
+  }
   let sys = <div className="message message-sys">{message.content}</div>
   let normal = <div className="message">
     <div className="sent-time">{sentAt}</div>
@@ -24,7 +36,7 @@ function Message(props) {
       <Avatar cssClass="avatar" size="36" url={message.senderAvatar}></Avatar>
       <div className="message-body">
         <div className="sender-name">{message.senderName}</div>
-        <div className="bubble">{message.content}</div>
+        { messageContent }
       </div>
     </div>
   </div>

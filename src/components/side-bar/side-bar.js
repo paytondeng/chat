@@ -42,9 +42,6 @@ class SideBar extends React.Component {
     this.handleClickProfilePanel = this.handleClickProfilePanel.bind(this);
     this.handleOpenAvatarPanel = this.handleOpenAvatarPanel.bind(this);
     this.handleSelectAvatar = this.handleSelectAvatar.bind(this);
-  }
-
-  componentWillMount() {
     window.addEventListener('click', this.hidePanels);
   }
 
