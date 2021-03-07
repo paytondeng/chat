@@ -9,7 +9,7 @@
     "eject": "react-scripts eject"
   },
   "dependencies": {
-    "axios": "^0.19.0",
+    "axios": "^0.21.1",
     "date-fns": "^2.8.1",
     "lodash-es": "^4.17.15",
     "react": "^16.11.0",
