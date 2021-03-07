@@ -2,6 +2,12 @@
   "name": "react-chat",
   "version": "0.0.1",
   "private": true,
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
   "dependencies": {
     "axios": "^0.19.0",
     "date-fns": "^2.8.1",
@@ -14,11 +20,8 @@
     "redux": "^4.0.4",
     "socket.io-client": "^2.3.0"
   },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+  "devDependencies": {
+    "node-sass": "^4.13.0"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -34,8 +37,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "node-sass": "^4.13.0"
   }
 }
