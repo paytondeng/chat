@@ -28,6 +28,7 @@
 .item-input {
   display: flex;
   align-items: center;
+  border-bottom: 1px solid #d6d6d6;
 
   .form-control {
     flex-grow: 1;
@@ -35,6 +36,10 @@
 
   &:first-child .form-control {
     margin-top: 0;
+  }
+
+  &:last-child {
+    border-bottom: none;
   }
 }
 
@@ -75,7 +80,6 @@
 .item-email {
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
-  border-bottom: 1px solid #d6d6d6;
 }
 
 .item-password {

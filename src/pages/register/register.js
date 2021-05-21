@@ -95,6 +95,7 @@ class Register extends React.Component {
                       name="confirmPassword"
                       onChange={this.handleChange}
                       placeholder="请再次输入密码"
+                      autoComplete="new-password"
                       required />
                 </div>
 
