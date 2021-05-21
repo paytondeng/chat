@@ -1,6 +1,8 @@
 # Mock WeChat Mac client
 Learn React through writing a realtime chat application.
 
+[Online site](http://chat.pcdeng.com)
+
 Screenshot
 ![chat](https://raw.githubusercontent.com/paytondeng/chat/master/public/chat.png)
 
