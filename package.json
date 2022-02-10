@@ -21,7 +21,7 @@
     "socket.io-client": "^2.3.0"
   },
   "devDependencies": {
-    "node-sass": "^4.13.0"
+    "node-sass": "^7.0.0"
   },
   "eslintConfig": {
     "extends": "react-app"
